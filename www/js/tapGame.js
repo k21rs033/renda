@@ -50,19 +50,30 @@ function saveScore (name, score) {
    })
    .catch(function(error){
        console.lod("保存に失敗しました。エラー："+error);
+
    });
-    
-    
-    
-    
-    
-    
-    
+ 
     
     
     
     // ********************************************************
 }
+
+function saveScore (name, score) {
+
+    var highScore = ncmb.DataStore("GameScore");
+    highScore.order("score",true)
+    .limit(5)
+    .fetchAll()
+    .then(function(results){
+        console.log("検索に成功しました。");
+        setData(results);
+    })
+    .catch(function(error){
+        console.log("検索に失敗しました。エラー："+error);
+    });
+}
+
 
 // タイマー
 function countTime(time) {
