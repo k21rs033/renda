@@ -21,6 +21,17 @@
     <script src="js/keys.js"></script>
     <script src="js/tapGame.js"></script>
     <script src="js/ranking.js"></script>
+
+    function searchLevelLT(){
+                let level parseInt($("#level").val());
+                let TEstDataClass = ncmb.dataStore(db);
+                TEstDataClass
+                .lessThan("level",level)
+                .fetchAll()
+                .then(function(results){
+                    showResults(results);
+                })
+            }
 </head>
 <body>
     <!-- ゲーム画面 -->
