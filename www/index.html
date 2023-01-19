@@ -21,17 +21,19 @@
     <script src="js/keys.js"></script>
     <script src="js/tapGame.js"></script>
     <script src="js/ranking.js"></script>
-
-    function searchLevelLT(){
-                let level parseInt($("#level").val());
+    <!-- <script>
+        function searchLevelGT(){
+                //let score parseInt($("#score").val());
                 let TEstDataClass = ncmb.dataStore(db);
                 TEstDataClass
-                .lessThan("level",level)
+                .lessThan("score",true)
                 .fetchAll()
                 .then(function(results){
-                    showResults(results);
+                    setData(results);
+                    //showResults(results);
                 })
-            }
+        }
+    </script> -->
 </head>
 <body>
     <!-- ゲーム画面 -->
@@ -92,8 +94,11 @@
                         <td align="right" nowrap>５位</td>
                         <td id = "name_5" align="center" width="200">no data</td>
                         <td id = "name_5" align="center" width="150">-</td>
+                        
                     </tr>
-                    <button id="btnA">Worst</button>
+                    <div id ="button">
+                        <button class = "btn" onclick ="worst()">Worst</button>
+                    </div>
                 </table> 
             </center>
         </div>
