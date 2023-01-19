@@ -46,6 +46,31 @@ function worst(){
     });
 }
 
+function countData(){
+    var isPushed = 0;
+    let msg = "";
+    let data = ncmb.DataStore("GameScore")
+    data.count().fetchAll()
+    .then(function(results){
+        if (isPushed == 0){
+            isPushed = 1;
+            msg = results.count+"回";
+            let tableBody = document.getElementById("rankingTable");
+            tableBody.append(msg);
+            msg = "";
+        } else{
+            let tableBody = document.getElementById("rankingTable");
+            tableBody.append(msg);
+        }
+    })
+    // .catch(function(error){
+    //     $("#ranking-page").removeClass();
+    //     $("#ranking-page").addClass("bg-warning");
+    //     $("#ranking-page").html("count fail:" + JSON.stringify(error));
+    // })
+}
+
+
 // テーブルにデータを設定
 function setData(array) {
    var table = document.getElementById("rankingTable");
